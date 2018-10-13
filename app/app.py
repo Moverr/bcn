@@ -1,6 +1,7 @@
 from flask import Flask,jsonify,render_template,request
 from flask_restful import Resource,Api
 from entity.entities import HelloWord,TodoSimple,TransactionEntityList,TransactionEntity
+from entity.registration import RList
 from model.income import Income,IncomeSchema
 from model.expense import Expense,ExpeseSchema
 from model.transaction_type import TransactionType
@@ -26,7 +27,7 @@ incomes = [
 ]
 
  
- 
+api.add_resource(RList,'/registration')
 # @app.route('/')
 api.add_resource(TransactionEntityList,'/transactions')
 api.add_resource(TransactionEntity,'/tr/<todo_id>')
