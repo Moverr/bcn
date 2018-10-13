@@ -7,12 +7,11 @@ from model.registration import Registration as AccountRegistration
 
  
 
-registrations = [
-    registration
-]
+# //todo: list data 
+registrations = [ ]
 
 
-class List(Resource):
+class RList(Resource):
     def get(self):
         schema = IncomeSchema(many=True)
         incomes = schema.dump(
@@ -20,8 +19,8 @@ class List(Resource):
         )
         return  jsonify(incomes.data)
     def post(self):
-        data = request.get_json();
-        registration = AccountRegistration('username', "password","email");
+        data = request.get_json(); 
+        registration = AccountRegistration(data['username'],data['password'],data['email']);   
         registrations.append(registration)
         return self.get()
 
