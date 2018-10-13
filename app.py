@@ -1,23 +1,29 @@
-from flask import Flask 
+from flask import Flask,jsonify,render_template
 
 app = Flask(__name__)
 
 @app.route('/')
 def index():
-   return '<h1> HOME PAGE </h1>'
+   return  render_template('index.html')
 
 @app.route('/about')
 def about():
-   return '<h1> ABOUT US PAGE </h1>'
+   return jsonify('<h1> ABOUT US PAGE </h1>')
 
 
 @app.route('/contact')
 def contact():
-   return '<h1> CONTACT US</h1>'
+   return jsonify('<h1> CONTACT US</h1>')
 
 @app.route('/register')
-def contact():
-   return '<h1> REGISTER</h1>'
+def register():
+   return jsonify('<h1> REGISTER</h1>')
+
+
+@app.route('/profile/<profilename>')
+def profile(profilename):
+    return jsonify('profile.html', profile=profilename)
+
 
 
 
