@@ -1,6 +1,6 @@
 import datetime as dt 
-
-from flask_marshmallow import Schema, fields
+from marshmallow import Schema,fields
+from marshmallow import post_load
 
 class Registration():
     def __init__(self,username,passowrd,email):
@@ -13,4 +13,9 @@ def __repr__(self):
 
 
 class RegistrationSchema(Schema):
-    pass;
+    username = fields.Str()
+    password = fields.Str()
+    created_at = fields.Date() 
+    @post_load
+    def make_registration(self,data):
+        return Registration(**data)
