@@ -1,4 +1,4 @@
-from flask import Flask,jsonify,render_template
+from flask import Flask,jsonify,render_template,request
 
 app = Flask(__name__)
 
@@ -6,18 +6,22 @@ app = Flask(__name__)
 def index():
    return  render_template('index.html')
 
-@app.route('/about')
-def about():
-   return jsonify('<h1> ABOUT US PAGE </h1>')
+@app.route('/registtration',method=['GET'])
+def getRegistrations():
+   return jsonify('Get all registration in the system')
+
+@app.route('/registtration/<id>',method=['GET'])
+def getRegistrationById(id):
+   return jsonify('Registration by Id')
 
 
-@app.route('/contact')
-def contact():
-   return jsonify('<h1> CONTACT US</h1>')
+@app.route('/registtration',method=['POST'])
+def register(id):
+   return jsonify('Registration by Id')
 
-@app.route('/register')
-def register():
-   return jsonify('<h1> REGISTER</h1>')
+
+
+
 
 
 @app.route('/profile/<profilename>')
